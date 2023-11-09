@@ -1,0 +1,340 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+
+  direction: rtl;
+}
+
+.container {
+  background-image: url(assets/bg.png);
+  /* background: red; */
+  display: flex;
+  width: 100%;
+  gap: .5vw;
+  padding: 0 2vw;
+  padding-top: 1.4vw;
+  /* max-width: 90vw; */
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  height: 100vh;
+}
+
+section {
+  /* background: #fff;
+border-radius: 7px; */
+}
+
+.tools-board {
+  width: 14vw;
+  /* padding: 1vw 1.2vw 0; */
+}
+
+.tools-board .row {
+  margin-bottom: .5vw;
+}
+
+.row .options {
+  list-style: none;
+  margin: 0 0 1.7vw .25vw;
+}
+
+.row .options .option {
+  display: flex;
+  cursor: pointer;
+  align-items: flex-end;
+  margin-bottom: .1vw;
+}
+
+.option.active::before {
+  /* filter: invert(17%) sepia(90%) saturate(3000%) hue-rotate(900deg) brightness(100%) contrast(100%); */
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  height: inherit;
+  width: 7.5vw;
+  background: inherit;
+  transform: translate(-50%, -50%);
+}
+
+.option :where(span, label) {
+  color: #5A6168;
+  cursor: pointer;
+  padding-right: .4vw;
+  font-size: 1.2vw;
+  width: 5vw;
+}
+
+.option:is(:hover, .active) :where(span, label) {
+  color: #4A98F7;
+}
+
+.shapes .options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 7vw);
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "section content"
+    "header header"
+    "footer footer";
+  border: 0.2vw solid #b2b2b2;
+  padding: .8vw 2vw;
+  width: 16vw;
+  border-radius: 5px;
+}
+
+.shapes .content {
+  grid-area: content;
+}
+
+.shapes .option img {
+  width: 5vw;
+}
+
+.option #fill-color {
+  cursor: pointer;
+  height: 1.4vw;
+  width: 1.4vw;
+}
+
+#fill-color:checked~label {
+  color: #4A98F7;
+}
+
+.option #size-slider {
+  width: 6.5vw;
+  height: .4vw;
+  margin-top: .6vw;
+}
+
+/*********** Baseline, reset styles ***********/
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Removes default focus */
+input[type="range"]:focus {
+  outline: none;
+}
+
+/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #b2b2b2;
+  border-radius: 25px;
+  height: 0.6vw;
+  border: .25vw solid #d0d0d0;
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* Override default look */
+  appearance: none;
+  margin-top: -.65vw;
+  /* Centers thumb on the track */
+  background-color: #fae589;
+  border-radius: 1vw;
+  height: 1.5vw;
+  width: 1.5vw;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb:hover {
+  background-color: #f3db71;
+}
+
+/*********** Firefox styles ***********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+  background-color: #b2b2b2;
+  border-radius: 25px;
+  height: 0.6vw;
+  border: .25vw solid #d0d0d0;
+}
+
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+  background-color: #fae589;
+  border: none;
+  /*Removes extra border that FF applies*/
+  border-radius: 1vw;
+  height: 1.5vw;
+  width: 1.5vw;
+}
+
+input[type="range"]:focus::-moz-range-thumb:hover {
+  background-color: #f3db71;
+}
+
+.tools .options {
+  position: relative;
+}
+
+.tools .option {
+  height: 3vw;
+  width: 5.7vw;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 1.4vw;
+}
+
+.tools .option:nth-child(1) {
+  color: #42C648;
+  background-image: url(./assets/brush.png);
+}
+
+.tools .option:nth-child(2) {
+  color: #A141F4;
+  background-image: url(./assets/erase.png);
+}
+
+.tools .option:nth-child(3) {
+  position: absolute;
+  transform: rotate(90deg);
+  left: 0;
+  top: 1.8vw;
+}
+
+.colors .options {
+  /* display: flex; */
+  justify-content: space-between;
+  background-image: url(./assets/w.png);
+  background-repeat: no-repeat;
+  background-position: center left;
+  background-size: cover;
+  padding-right: 1.25vw;
+}
+
+.colors .option {
+  height: 2.9vw;
+  width: 5.7vw;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.colors .option:nth-child(1) {
+  color: #42C648;
+  background-image: url(./assets/g.png);
+}
+
+.colors .option:nth-child(2) {
+  color: #A141F4;
+  background-image: url(./assets/p.png);
+}
+
+.colors .option:nth-child(3) {
+  color: #45C3F4;
+  background-image: url(./assets/b.png);
+}
+
+.colors .option:nth-child(4) {
+  color: #F46113;
+  background-image: url(./assets/o.png);
+}
+
+.colors .option:nth-child(5) {
+  color: #F43D25;
+  background-image: url(./assets/r.png);
+}
+
+.colors .option:nth-child(6) {
+  color: #F4DF1C;
+  background-image: url(./assets/y.png);
+}
+
+.colors .option:nth-child(7) {
+  background-image: url(./assets/colors.png);
+}
+
+/* .colors .option.selected:nth-child(7)::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: inherit;
+  width: 7.5vw;
+  background: red;
+  transform: translate(-50%, -50%);
+} */
+
+.colors .option.selected::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: inherit;
+  width: 7.5vw;
+  background: inherit;
+  transform: translate(-50%, -50%);
+}
+
+.colors .option:first-child.selected::before {
+  border-color: #ccc;
+}
+
+.option #color-picker {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+}
+
+.buttons button {
+  width: 6vw;
+  height: 3vw;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: .9vw 0;
+  font-size: 1vw;
+  margin-bottom: 1vw;
+  background: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.buttons .clear-canvas {
+  background-image: url(./assets/del.png);
+}
+
+.buttons .save-img {
+  background-image: url(./assets/save.png);
+}
+
+.drawing-board {
+  flex: 1;
+  overflow: hidden;
+  background-image: url(assets/board.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top;
+  position: relative;
+  height: 43vw;
+}
+
+.drawing-board canvas {
+  width: 70.8vw;
+  height: 37vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-49.9%, -44%);
+}
