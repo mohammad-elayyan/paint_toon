@@ -11,6 +11,8 @@ const canvas = document.querySelector("canvas"),
 // global variables with default value
 let prevMouseX,
   prevMouseY,
+  newMouseX,
+  newMouseY,
   snapshot,
   isDrawing = false,
   selectedTool = "brush",
@@ -71,8 +73,11 @@ const drawTriangle = (e) => {
 
 const startDraw = (e) => {
   isDrawing = true;
-  prevMouseX = e.offsetX; // passing current mouseX position as prevMouseX value
-  prevMouseY = e.offsetY; // passing current mouseY position as prevMouseY value
+  console.log(e);
+  let rect = e.target.getBoundingClientRect();
+
+  prevMouseX = e.offsetX ? e.offsetX : e.targetTouches[0].pageX - rect.left; // passing current mouseX position as prevMouseX value
+  prevMouseY = e.offsetY ? e.offsetY : e.targetTouches[0].pageY - rect.top; // passing current mouseY position as prevMouseY value
   ctx.beginPath(); // creating new path to draw
   ctx.lineWidth = brushWidth; // passing brushSize as line width
   ctx.strokeStyle = selectedColor; // passing selectedColor as stroke style
@@ -88,8 +93,12 @@ const drawing = (e) => {
   if (selectedTool === "brush" || selectedTool === "eraser") {
     // if selected tool is eraser then set strokeStyle to white
     // to paint white color on to the existing canvas content else set the stroke color to selected color
+    let rect = e.target.getBoundingClientRect();
+    newMouseX = e.offsetX ? e.offsetX : e.targetTouches[0].pageX - rect.left; // passing current mouseX position as newMouseX value
+    newMouseY = e.offsetY ? e.offsetY : e.targetTouches[0].pageY - rect.top; // passing current mouseY position as prevMouseY value
+
     ctx.strokeStyle = selectedTool === "eraser" ? "#FFF9F5" : selectedColor;
-    ctx.lineTo(e.offsetX, e.offsetY); // creating line according to the mouse pointer
+    ctx.lineTo(newMouseX, newMouseY); // creating line according to the mouse pointer
     ctx.stroke(); // drawing/filling line with color
   } else if (selectedTool === "rectangle") {
     drawRect(e);
@@ -146,15 +155,13 @@ canvas.addEventListener("mousemove", drawing);
 canvas.addEventListener("mouseup", () => (isDrawing = false));
 
 canvas.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  startDraw();
+  startDraw(e);
 });
 canvas.addEventListener("touchmove", (e) => {
   e.preventDefault();
-  drawing();
+  drawing(e);
 });
 
 canvas.addEventListener("touchend", (e) => {
-  e.preventDefault();
   isDrawing = false;
 });
