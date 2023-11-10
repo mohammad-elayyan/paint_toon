@@ -117,6 +117,13 @@ toolBtns.forEach((btn) => {
     btn.classList.add("active");
     selectedTool = btn.id;
   });
+  btn.addEventListener("touchstart", () => {
+    // adding click event to all tool option
+    // removing active class from the previous option and adding on current clicked option
+    document.querySelector(".options .active").classList.remove("active");
+    btn.classList.add("active");
+    selectedTool = btn.id;
+  });
 });
 
 sizeSlider.addEventListener("change", () => (brushWidth = sizeSlider.value)); // passing slider value as brushSize
