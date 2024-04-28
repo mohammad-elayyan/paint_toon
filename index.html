@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Drawing App</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.createjs.com/1.0.0/easeljs.min.js"></script>
+  <script src="https://unpkg.com/konva@9.2.3/konva.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="home-page">
+    <div class="overlay"></div>
+    <div class="start">
+      <img src="./assets/library/new.png" alt="">
+      <img src="./assets/library/lib.png" alt="">
+    </div>
+
+  </div>
+  <div class="container">
+    <section class="tools-board">
+      <div class="row buttons">
+        <button class="undo" title="تراجع"></button>
+        <button class="redo" title="استعادة"></button>
+        <button class="save-img" title="حفظ"></button>
+        <input type="file" id="fileInput" accept="image/*">
+        <button class="home" title="الرئيسية"></button>
+      </div>
+
+      <div class="tools">
+        <div class="row ruler">
+          &nbsp;
+        </div>
+        <div class="row panel">
+          <ul class="options">
+            <li class="option active tool" id="brush"></li>
+            <li class="option tool" id="colors"><img src="./assets/blk.png" alt=""></li>
+            <li class="option tool" id="shapes"><img src="./assets/circle.png" alt=""></li>
+            <li class="option tool" id="eraser"></li>
+          </ul>
+          <div class="pipe"></div>
+          <div class="row inside-panel">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row buttons">
+        <button class="gallery"></button>
+        <button class="clear-canvas popup-btn"></button>
+        <button id="add-img" class="add-img"></button>
+      </div>
+
+    </section>
+
+    <section class="drawing-board">
+      <canvas id="canvas"></canvas>
+    </section>
+  </div>
+
+  <div class="popup">
+    <h1>
+    </h1>
+    <span class="close">
+
+    </span>
+  </div>
+
+</body>
+
+</html>
