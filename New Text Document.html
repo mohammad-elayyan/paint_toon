@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Cursor Size</title>
+    <style>
+        #canvas {
+            border: 1px solid #000;
+            cursor: crosshair;
+            /* Set default cursor style */
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <input type="range" id="cursorSize" min="5" max="50" value="10">
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+            var cursorSizeInput = document.getElementById("cursorSize");
+
+            // Initial cursor size
+            var cursorSize = parseInt(cursorSizeInput.value);
+
+            // Update cursor size when range input changes
+            cursorSizeInput.addEventListener("input", function () {
+                cursorSize = parseInt(this.value);
+                canvas.style.cursor = "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\" width=\"" + cursorSize + "\" height=\"" + cursorSize + "\"><circle cx=\"16\" cy=\"16\" r=\"" + (cursorSize / 2) + "\" fill=\"black\"/></svg>') " + (cursorSize / 2) + " " + (cursorSize / 2) + ", auto";
+            });
+
+            // Mouse event listeners
+            canvas.addEventListener("mousedown", function (e) {
+                draw(e);
+                canvas.addEventListener("mousemove", draw);
+            });
+
+            canvas.addEventListener("mouseup", function () {
+                canvas.removeEventListener("mousemove", draw);
+            });
+
+            function draw(e) {
+                var x = e.clientX - canvas.getBoundingClientRect().left;
+                var y = e.clientY - canvas.getBoundingClientRect().top;
+
+                context.beginPath();
+                context.arc(x, y, cursorSize / 2, 0, 2 * Math.PI);
+                context.fillStyle = "black";
+                context.fill();
+            }
+        };
+    </script>
+</body>
+
+</html>
