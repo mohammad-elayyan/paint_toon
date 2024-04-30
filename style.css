@@ -70,6 +70,10 @@ body {
   margin-top: 2vw;
   padding: 0.3vw 2vw;
 }
+.home-page .lib h1 {
+  color: #666666;
+  font-size: 1.9vw;
+}
 
 .home-page .lib::-webkit-scrollbar {
   width: 7px;
@@ -164,7 +168,7 @@ canvas.resizing {
   color: #666666 !important;
   cursor: pointer;
   padding-right: 0.4vw;
-  font-size: 1.2vw;
+  font-size: 0.9vw;
   width: 4.9vw;
 }
 
@@ -344,29 +348,10 @@ input[type="range"]:focus::-moz-range-thumb:hover {
 }
 .tools .inside-panel .options .tool:nth-child(6) {
   justify-content: flex-end;
-  align-items: center !important;
-  margin-left: 0.2vw;
+  align-items: end !important;
+  margin-left: 0.3vw;
   font-family: "Poppins", sans-serif;
 }
-
-/* .colors .option:nth-child(1) {
-  color: #42c648;
-  background-image: url(./assets/brush.png);
-}
-
-.colors .option:nth-child(2) {
-  color: #a141f4;
-  background-image: url(./assets/erase.png);
-} */
-
-/* .colors .option:nth-child(3) {
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: flex;
-  align-items: center;
-  height: 7.08vw;
-} */
 
 .tools-board .panel {
   display: flex;
@@ -460,7 +445,7 @@ input[type="range"]:focus::-moz-range-thumb:hover {
   height: 6.6vw;
   margin: 0.2vw 0;
 }
-.inside-panel .options .option:not(.slider):hover {
+.inside-panel .options .option:not(.slider, .fill):hover {
   transform: scale(1.12);
 }
 .inside-panel .color:nth-child(1) {
@@ -533,6 +518,10 @@ input[type="range"]:focus::-moz-range-thumb:hover {
   position: relative;
 }
 
+button {
+  background-color: transparent;
+}
+
 .buttons button {
   width: 6vw;
   height: 3vw;
@@ -555,7 +544,7 @@ input[type="range"]:focus::-moz-range-thumb:hover {
 .buttons button:hover {
   transform: scale(1.1);
 }
-.panel .tool:hover:not(.active, .shape) {
+.panel .tool:hover:not(.active, .shape, .fill) {
   transform: scale(1.05);
 }
 
